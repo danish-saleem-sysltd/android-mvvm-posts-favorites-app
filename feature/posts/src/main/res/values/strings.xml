@@ -6,7 +6,7 @@
     <string name="posts_main_tab_favorites">Favorites</string>
     <string name="posts_tab_empty">No posts available</string>
     <string name="posts_favorites_empty">No favorites yet</string>
-    <string name="posts_favorites_swipe_delete">Remove from favorites</string>
+    <string name="posts_favorites_swipe_delete">Delete</string>
     <string name="posts_item_add_favorite">Add to favorites</string>
     <string name="posts_item_remove_favorite">Remove from favorites</string>
 </resources>
