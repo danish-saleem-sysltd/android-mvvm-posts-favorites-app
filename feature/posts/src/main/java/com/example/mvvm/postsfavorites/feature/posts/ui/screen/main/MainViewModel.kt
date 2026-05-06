@@ -43,7 +43,12 @@ class MainViewModel @Inject constructor(
     private fun observePosts() {
         viewModelScope.launch {
             readPostsRepository.observePosts().collect { posts ->
-                _state.update { it.copy(posts = posts.toImmutableList()) }
+                _state.update {
+                    it.copy(
+                        posts = posts.toImmutableList(),
+                        errorVisible = if (posts.isNotEmpty()) false else it.errorVisible,
+                    )
+                }
             }
         }
     }
