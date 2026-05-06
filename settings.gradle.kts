@@ -23,5 +23,11 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "AndroidMVVMPostsFavoritesApp"
+
 include(":app")
- 
+include(":core:common")
+include(":core:network")
+include(":core:data")
+include(":core:ui")
+include(":feature:auth")
+include(":feature:posts")
