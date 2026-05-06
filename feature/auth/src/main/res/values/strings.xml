@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="auth_login_title">Sign in</string>
+    <string name="auth_login_title">Welcome back</string>
+    <string name="auth_login_subtitle">Sign in to continue</string>
     <string name="auth_login_email_label">Email</string>
     <string name="auth_login_password_label">Password</string>
     <string name="auth_login_email_error">Enter a valid email address</string>

@@ -1,11 +1,18 @@
 package com.example.mvvm.postsfavorites.feature.auth.ui.screen.login
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -17,6 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.mvvm.postsfavorites.core.ui.components.AppButton
@@ -49,21 +57,20 @@ private fun LoginContent(
     state: LoginState,
     onEvent: (LoginUiEvent) -> Unit,
 ) {
-    Scaffold { padding ->
+    Scaffold(containerColor = MaterialTheme.colorScheme.background) { padding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
-                .padding(MaterialTheme.spacing.lg),
-            verticalArrangement = Arrangement.Center,
+                .padding(horizontal = MaterialTheme.spacing.lg),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            Text(
-                text = stringResource(R.string.auth_login_title),
-                style = MaterialTheme.typography.headlineMedium,
-                color = MaterialTheme.colorScheme.onBackground,
-            )
-            Spacer(Modifier.height(MaterialTheme.spacing.xl))
+            Spacer(Modifier.height(MaterialTheme.spacing.xxxl))
+
+            LoginHeader()
+
+            Spacer(Modifier.height(MaterialTheme.spacing.xxl))
+
             AppTextField(
                 value = state.email,
                 onValueChange = { onEvent(LoginUiEvent.EmailChanged(it)) },
@@ -90,6 +97,35 @@ private fun LoginContent(
             )
         }
     }
+}
+
+@Composable
+private fun LoginHeader() {
+    Box(
+        modifier = Modifier
+            .size(96.dp)
+            .background(MaterialTheme.colorScheme.primaryContainer, CircleShape),
+        contentAlignment = Alignment.Center,
+    ) {
+        Icon(
+            imageVector = Icons.Filled.Lock,
+            contentDescription = null,
+            tint = MaterialTheme.colorScheme.onPrimaryContainer,
+            modifier = Modifier.size(44.dp),
+        )
+    }
+    Spacer(Modifier.height(MaterialTheme.spacing.lg))
+    Text(
+        text = stringResource(R.string.auth_login_title),
+        style = MaterialTheme.typography.headlineMedium,
+        color = MaterialTheme.colorScheme.onBackground,
+    )
+    Spacer(Modifier.height(MaterialTheme.spacing.xxs))
+    Text(
+        text = stringResource(R.string.auth_login_subtitle),
+        style = MaterialTheme.typography.bodyMedium,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+    )
 }
 
 @Preview
